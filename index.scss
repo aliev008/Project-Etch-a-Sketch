@@ -14,22 +14,41 @@ body {
 
 #container {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+
+.section {
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-#newGrid-btn {
-    background: #000000;
-    color: #fff;
+.sec-right {
+    gap: 20px;
+}
+
+.sec-left {
+    height: 560px;
+    align-self: flex-end;
+}
+
+.btn {
     border: none;
     border-radius: 5px;
     padding: 15px;
     transition: all 0.3s ease-in-out;
-    margin-bottom: 70px;
+    margin-bottom: 30px;
+    background: #000000;
+    color: #fff;
+    width: 300px;
+    text-transform: uppercase;
 }
 
-#newGrid-btn:hover {
+.btn:hover {
     background: #fff;
     color: #000000;
     font-size: 1.05rem;
@@ -39,17 +58,29 @@ body {
     cursor: pointer;
 }
 
+
+.rgb-btn.active,
+.darkening-btn.active,
+.default-btn.active {
+    background: #c230c7;
+    color: #000000;
+    border: 1px solid #000000;
+}
+
+.default-btn {
+    margin-bottom: 50px;
+}
+
 #grid {
     display: flex;
     justify-content: center;
     align-items: center;
-    // gap: 5px;
     width: 560px;
     flex-wrap: wrap;
+    border: 1px solid black;
 }
 
 .grid-elem {
-    border: 1px solid black;
     width: 30px;
     height: 30px;
 }
