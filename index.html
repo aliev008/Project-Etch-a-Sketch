@@ -11,9 +11,11 @@
 <body>
     <div id="container">
         <div class="section sec-left">
-            <button class="btn rgb-btn">Random RGB mode</button>
-            <button class="btn darkening-btn">Darkening mode</button>
-            <button class="btn default-btn">Default mode</button>
+            <button class="btn rgb-btn" data-mode="rgb">Random RGB mode</button>
+            <button class="btn darkening-btn" data-mode="darkening">Darkening mode</button>
+            <button class="btn default-btn active" data-mode="default">Default mode</button>
+            <button class="btn eraser" data-mode="eraser">Eraser</button>
+
             <button class="btn newGrid-btn">Generate a new Grid!</button>
         </div>
         <div class="section sec-right">

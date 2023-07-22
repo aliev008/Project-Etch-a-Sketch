@@ -2,52 +2,51 @@ import { getRandomRgbValue } from "./getRandomRgbValue.js";
 
 export function createGridElem(newSquareDimension, state) {
   const gridElem = document.createElement("div");
-  const { mode, color} = state;
-  console.log(color);
+  const gridElemInner = document.createElement("div");
+
+  // const { mode, color } = state;
+  // console.log(color);
 
   gridElem.classList.add("grid-elem");
+  gridElemInner.classList.add("grid-elem-inner");
+  // gridElem.style.width = `${newSquareDimension}px`;
+  // gridElem.style.height = `${newSquareDimension}px`;
   gridElem.style.width = `${newSquareDimension}px`;
   gridElem.style.height = `${newSquareDimension}px`;
 
-  if (mode === "default") {
-    gridElem.addEventListener("mouseenter", () => {
-      gridElem.classList.add("active");
-    });
+  let opacity = 0;
 
-    gridElem.addEventListener("mouseleave", () => {
-      setTimeout(() => {
-        // gridElem.classList.remove("active");
-      }, 100);
-    });
-  }
+  gridElemInner.addEventListener("mouseenter", () => {
+    console.log(opacity);
+    // console.log(state.mode);
+    if (state.mode === "rgb") {
+      gridElemInner.style.opacity = 1;
+      gridElemInner.style.backgroundColor = getRandomRgbValue();
+    } else if (state.mode === "darkening") {
+      gridElemInner.style.backgroundColor = state.color;
 
-  if (mode === "rgb") {
-    gridElem.addEventListener("mouseenter", () => {
-      gridElem.style.backgroundColor = getRandomRgbValue();
-    });
+      if (opacity < 1) {
+        gridElemInner.style.opacity = opacity;
+        opacity += 0.1;
+      }
+      console.log(opacity);
+    } else if (state.mode === "eraser") {
+      gridElemInner.style.opacity = 1;
+      opacity = 0;
+      gridElemInner.style.backgroundColor = `rgba(0,0,0,0)`;
+    } else {
+      gridElemInner.style.opacity = 1;
+      gridElemInner.style.backgroundColor = state.color;
+    }
+  });
 
-    gridElem.addEventListener("mouseleave", () => {
-      setTimeout(() => {
-        // gridElem.classList.remove("active");
-      }, 100);
-    });
-  }
+  gridElemInner.addEventListener("mouseleave", () => {
+    setTimeout(() => {
+      // gridElem.classList.remove("active");
+    }, 100);
+  });
 
-  if (mode === "darkening") {
-    gridElem.style.opacity = 0;
-    gridElem.style.backgroundColor = color;
-    let opacity = 0;
-    gridElem.addEventListener("mouseenter", () => {
-      opacity += 0.1;
-      gridElem.style.opacity = opacity;
-    });
-
-    gridElem.addEventListener("mouseleave", () => {
-      setTimeout(() => {
-        // gridElem.classList.remove("active");
-      }, 100);
-    });
-  }
+  gridElem.appendChild(gridElemInner);
 
   return gridElem;
 }

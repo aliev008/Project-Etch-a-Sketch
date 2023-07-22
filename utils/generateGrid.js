@@ -1,6 +1,6 @@
 import { createGridElem } from "./createGridElem.js";
 
-export function generateGrid(size, currentGrid, gridSizeText, state) {
+export function generateGrid(size = 16, currentGrid, gridSizeText, state) {
   const newSquareDimension = 556 / size;
 
   currentGrid.innerHTML = "";

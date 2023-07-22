@@ -1,7 +1,7 @@
 import { getRandomNumber } from "./getRandomNumber.js";
 
 export function getRandomRgbValue() {
-  return `rgb(${getRandomNumber(256)},${getRandomNumber(256)},${getRandomNumber(
-    256
+  return `rgb(${getRandomNumber(255)},${getRandomNumber(255)},${getRandomNumber(
+    255
   )})`;
 }
