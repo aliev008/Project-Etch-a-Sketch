@@ -14,8 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
     color: "#000000",
   };
 
-  // setInterval(() => console.log(state), 5000);
-
   generateGrid(16, currentGrid, gridSizeText, state);
 
   modeButtons.forEach((button) => {

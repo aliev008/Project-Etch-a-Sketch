@@ -5,10 +5,7 @@ export function newGridBtnHandler(currentGrid, gridSizeText, state, elem) {
   const selectedMode = elem.getAttribute("data-mode");
   elem.classList.add("active");
 
-  state = {
-    ...state,
-    mode: selectedMode,
-  };
+  state.mode = selectedMode;
 
   if (isNaN(newGridSize) || newGridSize < 1 || newGridSize > 100) {
     alert("Please, enter a valid number from 1 to 100");
